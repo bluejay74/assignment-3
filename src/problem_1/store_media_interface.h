@@ -24,10 +24,13 @@ public:
     }
 
     bool operator==(const StoreMediaInterface &other_media) const {
+        if(other_media.inventory_id == this->inventory_id){
+            return true;
+        }
+        return false;
         /*
          * TODO: homework
          */
-        return false;
     };
 
     bool operator!=(const StoreMediaInterface &other_media) const {
