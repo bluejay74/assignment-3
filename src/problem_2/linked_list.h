@@ -34,10 +34,25 @@ public:
 
     // copy constructor
     LinkedList(const LinkedList<T> &other_list) : LinkedList() {
+        if(other_list.head == nullptr) return;
+        auto *dummyHead = new ListNode<T>;
+        ListNode<T> *curr = dummyHead;
+        ListNode<T> *othcurr = other_list.head;
+        for(; othcurr!=nullptr; othcurr = othcurr->next)
+        {
+            curr->val = othcurr->val;
+            curr->next = new ListNode<T>;
+            curr = curr->next;
+            curr->next = nullptr;
+        }
+        head = dummyHead;
+        delete dummyHead;
+        num_of_element = other_list.num_of_element;
+    }
         /*
          * TODO: homework
          */
-    }
+
 
     // destructor
     virtual ~LinkedList() {
